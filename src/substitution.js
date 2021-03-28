@@ -8,15 +8,17 @@ const substitutionModule = (function () {
 
   function substitution(input, alphabet, encode = true) {
     // your solution code here
-    // empty alphabet guard clause
+    // alphabet empty and length guard clause
     if (!alphabet || alphabet.length != 26) return false;
     
+    // alphabet all unique character letters guard clause
     const unique = new Set([...alphabet]);
     if (unique.size != 26) return false;
 
     const substitutes = alphabet.split('');
     const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
+    // determines order of keys and values
     const createCipher = (arr1, arr2) => {
       const cipher = {};
 
@@ -30,7 +32,7 @@ const substitutionModule = (function () {
     const cipher = encode ? createCipher(letters, substitutes)
                           : createCipher(substitutes, letters);
 
-    const encoder = () => {
+    const encoderDecoder = () => {
       let result = '';
 
       for (let ltr of input) {
@@ -41,7 +43,7 @@ const substitutionModule = (function () {
       return result;
     }
 
-    return encoder();
+    return encoderDecoder();
 
   }
 
